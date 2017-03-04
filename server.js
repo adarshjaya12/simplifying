@@ -1,19 +1,20 @@
-const express = require('express')
-const fs = require('fs')
-const crypto = require('crypto')
-const bodyParser = require('body-parser')
-const https = require('https')
-const http = require('http')
-const app = express()
+var express = require('express')
+var fs = require('fs')
+var bodyParser = require('body-parser')
+var https = require('https')
+var http = require('http')
+var app = express()
+var privateKey = fs.readFileSync('.key','utf8')
+var certificate = fs.readFileSync('.crt','utf8')
+var credentials = { key: privateKey , cert: certificate}
 app.set('view engine','ejs')
 app.use(bodyParser.urlencoded({extended:true}))
-var db
-var options = {
-    key: fs.readFileSync('/path/to/key.pem'),
-    cert: fs.readFileSync('/path/to/cert.cert')
-};
 
-https.createserver(options,function(req,res){
+
+var db
+
+
+https.createserver(credentials,function(req,res){
     res.writeHead(200);
     res.end('hello world\n');
 }).listen(8080);
