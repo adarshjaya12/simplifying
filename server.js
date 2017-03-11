@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/dummy',function(req,res){
-   res. 
+   res.write("Dummy Yummy");
 });
 https.createServer(options, app).listen(8000,'127.0.0.1');
 });
