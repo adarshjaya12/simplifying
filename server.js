@@ -1,6 +1,7 @@
 var app = require('express');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var http =  require('http');
 var https = require('https');
 var options = {
    key  : fs.readFileSync('/root/server.key'),
@@ -9,9 +10,16 @@ var options = {
 app.set('view engine','ejs')
 app.use(bodyParser.urlencoded({extended:true}))
 app.get('/', function (req, res) {
-   res.render('index.ejs');
+   res.render('views/index.ejs');
 });
 
-https.createServer(options, app).listen(process.env.PORT || 8000,function () {
+app.get('/dummy',function(req,res){
+   res. 
+});
+https.createServer(options, app).listen(8000,function () {
    console.log('Started!');
+});
+
+http.createServer(app).listen(80,function(){
+    
 });
