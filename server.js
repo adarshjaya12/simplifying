@@ -16,10 +16,7 @@ app.get('/', function (req, res) {
 app.get('/dummy',function(req,res){
    res. 
 });
-https.createServer(options, app).listen(8000,function () {
-   console.log('Started!');
+https.createServer(options, app).listen(8000,'127.0.0.1');
 });
 
-http.createServer(app).listen(80,function(){
-    
-});
+http.createServer(app).listen(80,'127.0.0.1');
