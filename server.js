@@ -18,5 +18,3 @@ app.get('/dummy',function(req,res){
 });
 https.createServer(options, app).listen(8000,'127.0.0.1');
 });
-
-http.createServer(app).listen(80,'127.0.0.1');
