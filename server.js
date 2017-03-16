@@ -1,4 +1,5 @@
 var express = require('express')
+var engine = require('ejs-locals')
 var fs = require('fs')
 var http =  require('http')
 var https = require('https')
@@ -12,8 +13,9 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redi
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use('/stylesheet', express.static(__dirname + '/public/stylesheets')); // custom css
 app.set('views',__dirname + '/views');
+app.engine('ejs',engine);
 app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
+//app.engine('html', require('ejs').renderFile);
 
 
 https.createServer(options, app)
