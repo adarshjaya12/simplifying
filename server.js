@@ -7,7 +7,10 @@ var options = {
    key  : fs.readFileSync('/root/server.key','utf8'),
    cert : fs.readFileSync('/root/adarshjayakumar_me.crt','utf8')
 };
-
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+app.use('/stylesheet', express.static(__dirname + '/public/stylesheets')); // custom css
 app.set('views',__dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
@@ -21,8 +24,8 @@ app.listen(9011,function(){
    		res.render('index');
 	});
 
-	app.get('/dummy',function(req,res){
-   		res.write("Dummy Yummy");
+	app.get('/login',function(req,res){
+   		res.render('login');
 	});
 })
 
