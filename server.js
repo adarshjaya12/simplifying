@@ -1,12 +1,54 @@
 var express = require('express')
 var engine = require('ejs-locals')
 var fs = require('fs')
+var mongoose = require('mongoose')
+var passport = require('passport')
+var flash = require('connect-flash')
+var morgan = require('morgan')
+var cookieParser = require('cookie-parser')
+var bodyParser = require('body-parser')
+var session = require('express-session')
 var http =  require('http')
 var https = require('https')
 var app = express()
-var options = {
+var port = 6666;
+var configDB = require('./config/database.js');
+
+// Configuration ==================================
+mongoose.connect(configDB.url);
+
+
+//set up the application
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser());
+
+
+
+// required for passport
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+
+
+
+
+///// Configuration for SSL ===========================================//
+// Staging SLL config
+/*var options = {
    key  : fs.readFileSync('/root/server.key','utf8'),
    cert : fs.readFileSync('/root/adarshjayakumar_me.crt','utf8')
+};*/
+// Local SSL config
+/////==================================================================//
+
+
+var options = {
+   key  : fs.readFileSync('key.pem'),
+   cert : fs.readFileSync('cert.pem'),
+   passphrase: 'XXXX'
 };
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
@@ -15,25 +57,13 @@ app.use('/stylesheet', express.static(__dirname + '/public/stylesheets')); // cu
 app.set('views',__dirname + '/views');
 app.engine('ejs',engine);
 app.set('view engine', 'ejs');
-//app.engine('html', require('ejs').renderFile);
 
 
-https.createServer(options, app)
-http.createServer(app)
-
-app.listen(9011,function(){
-	app.get('/', function (req, res) {
-   		res.render('index');
-	});
-
-	app.get('/login',function(req,res){
-   		res.render('login');
-	});
-})
+https.createServer(options, app).listen(9011)
 
 
-app.listen(5091,function(){
-	app.get('/',function(req,res){
-		res.write('From 5991');
-	});
-})
+//// routes ======================================================================
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+
+
