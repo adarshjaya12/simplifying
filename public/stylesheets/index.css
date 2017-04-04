@@ -1,0 +1,92 @@
+body
+{
+    font-family: 'Alegreya Sans', sans-serif;
+}
+.container
+{
+    background-color: black;
+}
+p
+{
+    font-size: 2em;
+    margin : 0px;
+    color: white;
+}
+
+.col-sm-12
+{
+    margin-bottom: 1em !important;
+}
+div.jumbotron
+{
+    background-color: black;
+    padding: 0px !important;
+    margin: 0px !important;
+    border-radius: 0px !important;
+}
+.jumbotron-header
+{
+    background-color: mediumaquamarine;
+    height: 50px;
+}
+.jumbotron-container
+{
+    position: relative;
+    border-color:aqua;
+    height: 768px;
+}
+.jumbotron-image
+{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-55%);
+    z-index: 0;
+}
+.jumbotron-text
+{
+    position: absolute;
+    left:0;
+    top: 50%;
+    transform: translateY(-65%);
+    z-index: 1;
+}
+span.jumbotronText
+{
+    color: white;
+    display: block;
+    font-size: 100;
+    font-size: 8.66em;
+    line-height: 100%;
+    word-spacing: -10px;
+}
+span.jumbotronTextBold
+{
+    font-weight: 900;
+    line-height: 100%;
+}
+
+.featuresImage
+{
+    width: 700px;
+}
+.featuresSmallImage
+{
+    width: 100%;
+    height: auto;
+}
+.features
+{
+    padding: 5em 0;
+}
+div.featureHeader
+{
+   display: inline-block;
+   background-color:white;
+   padding-right: 3em;
+}
+.featureHeader span
+{
+    color:black;
+    font-size: 1.5em;
+}

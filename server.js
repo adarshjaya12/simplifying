@@ -22,7 +22,7 @@ mongoose.connect(configDB.url);
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
-
+app.use( express.static( "public" ) );
 
 
 // required for passport
