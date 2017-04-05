@@ -90,3 +90,24 @@ div.featureHeader
     color:black;
     font-size: 1.5em;
 }
+.integrationContent
+{
+    padding: 6em 0em;
+}
+.integration{
+    background-color: white;
+}
+
+p.advanceContent
+{
+    color:black;
+}
+p.buttonContent
+{
+    color :white;
+    font-size: 1.7em;
+}
+div.nextStepButton
+{
+    background-color: black;
+}
