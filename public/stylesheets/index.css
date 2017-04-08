@@ -117,6 +117,7 @@ div.integrationHeader
 p.advanceContent
 {
     color:black;
+    padding-right: 3em;
 }
 p.buttonContent
 {
@@ -126,4 +127,5 @@ p.buttonContent
 div.nextStepButton
 {
     background-color: black;
+    padding-left: 0.8em;
 }
