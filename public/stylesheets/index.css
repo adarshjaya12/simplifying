@@ -9,7 +9,7 @@ body
 }
 p
 {
-    font-size: 2em;
+    font-size: 1.5em;
     margin : 0px;
     color: white;
 }
@@ -84,9 +84,24 @@ div.featureHeader
 {
    display: inline-block;
    background-color:white;
+   padding-left: 0.8em;
    padding-right: 3em;
 }
 .featureHeader span
+{
+    color:black;
+    font-size: 1.5em;
+}
+.integrationRow
+{
+    background-color:white;
+}
+div.integrationHeader
+{
+   display: inline-block;
+   padding-right: 3em;
+}
+.integrationHeader span
 {
     color:black;
     font-size: 1.5em;
