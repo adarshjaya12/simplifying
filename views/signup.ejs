@@ -1,12 +1,17 @@
 <% layout('layout') -%>
+<div class="loginMessage">
+    <%if(message.length > 0){ %>
+        <div class="alert alert-danger"><%= message %></div>
+    } %>
+</div>
 <div class="login-form">
 	<div class="panel panel-default">
         <div class="panel-body">
             <form class="form-signin">
         <h2>LOG IN</h2>
-        <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
+        <input type="text" id="inputName" name="name" class="form-control" placeholder="Name" required autofocus>
+        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required autofocus>
         <input type="password" id="inputRetypePassword" class="form-control" placeholder="Retype Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>

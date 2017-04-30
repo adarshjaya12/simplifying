@@ -17,11 +17,13 @@ var configDB = require('./config/database.js');
 // Configuration ==================================
 mongoose.connect(configDB.url);
 
+//require('./config/passport')(passport);
 
 //set up the application
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
+app.set('view engine','ejs');
 app.use( express.static( "public" ) );
 
 
@@ -30,12 +32,7 @@ app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secre
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
-
-
-
-
-///// Configuration for SSL ===========================================//
+//// Configuration for SSL ===========================================//
 // Staging SLL config
 /*var options = {
    key  : fs.readFileSync('/root/server.key','utf8'),
